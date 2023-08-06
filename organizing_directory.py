@@ -14,14 +14,19 @@ def pickDirectory(value):
         for suffix in suffixes:
             if suffix == value:
                 return category
+    # return MISC category if the file type doesn't exist in our current dictionary
+    return "MISC"
 
 
-# print(pickDirectory(".mp3"))
+print(pickDirectory(".mpu3"))
 
 
 def organizeDirectory():
     # get all objects in folder
     for item in os.scandir():
+        # skip the item if its a directory
+        if item.is_dir():
+            continue
         # get file path for each file
         filePath = Path(item)
         # isolate the suffix to see what directory it needs to go to
@@ -35,4 +40,5 @@ def organizeDirectory():
             directoryPath.mkdir()
         # moving file happens in both cases [directory exist and directory does not exist]
         # so this is outside of if statement
+        # this next line changes file path to join with the directory path
         filePath.rename(directoryPath.joinpath(filePath))
