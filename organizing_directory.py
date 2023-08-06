@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 SUBDIRECTORIES = {
     "DOCUMENTS": [".pdf", ".rtf", ".txt"],
     "AUDIO": [".m4a", ".m4b", ".mp3"],
@@ -13,4 +16,15 @@ def pickDirectory(value):
                 return category
 
 
-print(pickDirectory(".mp3"))
+# print(pickDirectory(".mp3"))
+
+
+def organizeDirectory():
+    for item in os.scandir():
+        filePath = Path(item)
+        filetype = filePath.suffix.lower()
+        directory = pickDirectory(filetype)
+        directoryPath = Path(directory)
+        if directoryPath.is_dir() != True:
+            directoryPath.mkdir()
+        filePath.rename(directoryPath.joinpath(filePath))
