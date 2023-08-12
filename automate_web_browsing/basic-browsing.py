@@ -9,6 +9,8 @@ driver.get("https://www.selenium.dev/selenium/web/inputs.html")
 
 # Clear field to empty it from any previous data
 driver.find_element(By.NAME, "email_input").clear()
+driver.find_element(By.NAME, "number_input").clear()
 
 # Enter Text
 driver.find_element(By.NAME, "email_input").send_keys("test@localhost.dev")
+driver.find_element(By.NAME, "number_input").send_keys(10)
