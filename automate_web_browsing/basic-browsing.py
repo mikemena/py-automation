@@ -31,5 +31,11 @@ radio_button.click()
 # Take a screenshot
 driver.save_screenshot("screenshot-1.png")
 
+# Handling date field
+element = driver.find_element(By.NAME, "date_input")
+driver.execute_script("arguments[0].removeAttribute('readonly')", element)
+driver.execute_script("arguments[0].setAttribute('value', '2023/08/25')", element)
+
+
 # Close the driver
 driver.quit()
