@@ -13,13 +13,23 @@ driver.find_element(By.NAME, "number_input").clear()
 driver.find_element(By.NAME, "range_input").clear()
 driver.find_element(By.NAME, "password_input").clear()
 driver.find_element(By.NAME, "search_input").clear()
-# driver.find_element(By.NAME, "checkbox_input").clear()
-# driver.find_element(By.NAME, "radio_input").clear()
 
-# Enter Text
+# handling text fields
 driver.find_element(By.NAME, "email_input").send_keys("test@localhost.dev")
 driver.find_element(By.NAME, "number_input").send_keys(10)
 driver.find_element(By.NAME, "password_input").send_keys("12ggT45abc#")
 driver.find_element(By.NAME, "search_input").send_keys("golden retrievers")
 driver.find_element(By.NAME, "checkbox_input").click()
-# driver.find_element(By.NAME, "search_input").send_keys("golden retrievers")
+
+# Get the radio element with value='radio2'
+radio_button = driver.find_element(
+    By.XPATH, "//input[@type='radio' and @value='radio2']"
+)
+# Click on the radio button element
+radio_button.click()
+
+# Take a screenshot
+driver.save_screenshot("screenshot-1.png")
+
+# Close the driver
+driver.quit()
