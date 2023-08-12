@@ -3,7 +3,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-
 driver = webdriver.Chrome()
 driver.get("https://www.selenium.dev/selenium/web/inputs.html")
 
@@ -28,14 +27,13 @@ radio_button = driver.find_element(
 # Click on the radio button element
 radio_button.click()
 
+# set date input
+element = driver.find_element(By.NAME, "date_input")
+driver.find_element(By.NAME, "date_input").send_keys("08-12-2023")
+driver.execute_script("arguments[0].setAttribute('value', '08/12/2023')", element)
+
 # Take a screenshot
 driver.save_screenshot("screenshot-1.png")
-
-# Handling date field
-element = driver.find_element(By.NAME, "date_input")
-driver.execute_script("arguments[0].removeAttribute('readonly')", element)
-driver.execute_script("arguments[0].setAttribute('value', '2023/08/25')", element)
-
 
 # Close the driver
 driver.quit()
