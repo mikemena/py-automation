@@ -35,5 +35,6 @@ driver.execute_script("arguments[0].setAttribute('value', '08/12/2023')", elemen
 # Take a screenshot
 driver.save_screenshot("screenshot-1.png")
 
+driver.find_element(By.NAME, "reset_input").click()
 # Close the driver
 driver.quit()
