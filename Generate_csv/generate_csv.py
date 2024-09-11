@@ -63,7 +63,7 @@ def write_to_csv(folder_path, output_csv):
 
 # Specify the folder containing the GIFs and the output CSV file
 gif_folder = os.path.expanduser("~/exercise-gifs")
-output_file = os.path.expanduser("~/exercise-gifs-2/gif_data.csv")
+output_file = os.path.expanduser("~/exercise-gifs/_gif_data.csv")
 
 # Run the function to create the CSV
 write_to_csv(gif_folder, output_file)
